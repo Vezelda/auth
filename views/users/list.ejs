@@ -1,0 +1,15 @@
+<tbody>
+    <% users.forEach(user => { %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td>
+                <form action="/users/<%= user.id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    <% }) %>
+</tbody>
